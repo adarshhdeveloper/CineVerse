@@ -7,9 +7,22 @@ const app = express()
 
 //middleware
 app.use(express.json())
+import cors from 'cors'  // ya require
+
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:5174',
+]
+
 app.use(cors({
-    origin: 'http://localhost:5173',
-    credentials: true
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
+  credentials: true
 }))
 app.use(cookieParser())
 
