@@ -64,6 +64,8 @@ async function loginController(req, res) {
             password
         } = req.body
 
+       
+
         // Check if user exists
         const user = await userModel.findOne({
             email
@@ -72,6 +74,9 @@ async function loginController(req, res) {
             return res.status(404).json({
                 message: 'Invalid credentials'
             })
+        }
+         if (user.isBanned) {
+            return res.status(403).json({ message: 'Your account has been banned.' })
         }
 
         // Check if password is correct

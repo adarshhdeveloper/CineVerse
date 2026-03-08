@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
+  <!-- Film strip left -->
+  <rect x="2" y="10" width="8" height="30" rx="2" fill="#1a1a1a" stroke="#3b82f6" stroke-width="1"/>
+  <rect x="3" y="13" width="6" height="4" rx="1" fill="#3b82f6"/>
+  <rect x="3" y="21" width="6" height="4" rx="1" fill="#3b82f6"/>
+  <rect x="3" y="29" width="6" height="4" rx="1" fill="#3b82f6"/>
+
+  <!-- Play icon -->
+  <circle cx="22" cy="25" r="10" fill="#3b82f6"/>
+  <polygon points="19,20 19,30 29,25" fill="white"/>
+
+  <!-- CineVerse text -->
+  <text x="38" y="32" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white">Cine</text>
+  <text x="88" y="32" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#3b82f6">Verse</text>
+</svg>

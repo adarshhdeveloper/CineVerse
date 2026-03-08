@@ -25,5 +25,11 @@ watchHistoryRouter.get('/', identifyUser, watchHistoryController.getWatchHistory
 */
 watchHistoryRouter.delete('/remove/:movieId', identifyUser, watchHistoryController.deleteFromWatchHistory)
 
+/*
+* @route DELETE /api/watch-history/clear
+* @desc Clear entire watch history
+* @access Private
+*/
+watchHistoryRouter.delete('/clear', identifyUser, watchHistoryController.clearAllHistory)
 
 module.exports = watchHistoryRouter
