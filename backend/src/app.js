@@ -7,7 +7,6 @@ const app = express()
 
 //middleware
 app.use(express.json())
-import cors from 'cors'  // ya require
 
 const allowedOrigins = [
   'http://localhost:5173',
