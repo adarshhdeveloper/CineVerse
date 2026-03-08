@@ -40,7 +40,12 @@ async function registerController(req, res) {
             expiresIn: '5d'
         })
 
-        res.cookie('token', token, { httpOnly: true }) // Set token in cookie
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+            path: '/',
+        }) // Set token in cookie
         res.status(201).json({
             message: 'User registered successfully',
             user: {
@@ -64,7 +69,7 @@ async function loginController(req, res) {
             password
         } = req.body
 
-       
+
 
         // Check if user exists
         const user = await userModel.findOne({
@@ -75,8 +80,10 @@ async function loginController(req, res) {
                 message: 'Invalid credentials'
             })
         }
-         if (user.isBanned) {
-            return res.status(403).json({ message: 'Your account has been banned.' })
+        if (user.isBanned) {
+            return res.status(403).json({
+                message: 'Your account has been banned.'
+            })
         }
 
         // Check if password is correct
@@ -93,8 +100,13 @@ async function loginController(req, res) {
         }, process.env.JWT_SECRET, {
             expiresIn: '5d'
         })
-        
-        res.cookie('token', token, { httpOnly: true }) // Set token in cookie
+
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+            path: '/',
+        }) // Set token in cookie
         res.status(200).json({
             message: 'Login successful',
             user: {
@@ -122,11 +134,13 @@ async function getMeController(req, res) {
     try {
         const userId = req.user.id
         const user = await userModel.findById(userId)
-        
+
         if (!user) {
-            return res.status(404).json({ message: 'User not found' })
+            return res.status(404).json({
+                message: 'User not found'
+            })
         }
-        
+
         res.status(200).json({
             user: {
                 id: user._id,
@@ -136,7 +150,9 @@ async function getMeController(req, res) {
             }
         })
     } catch (error) {
-        res.status(500).json({ message: 'Internal server error' })
+        res.status(500).json({
+            message: 'Internal server error'
+        })
     }
 }
 
