@@ -2,6 +2,8 @@
 
 A full-stack movie discovery platform where users can explore movies, watch trailers, and manage their preferences.
 
+live link :  https://cine-verse-eta.vercel.app/
+
 ## Tech Stack
 
 **Frontend:** React.js, Redux Toolkit, React Router
