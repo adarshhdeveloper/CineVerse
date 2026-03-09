@@ -42,7 +42,7 @@ app.use('/api/watch-history', watchHistoryRouter)
 const adminRouter = require('./routes/admin.routes')
 app.use('/api/admin', adminRouter)
 
-// TMDB proxy routes
+// TMDB proxy route
 app.use('/api/tmdb', async (req, res) => {
   try {
     const tmdbPath = req.path
@@ -54,8 +54,8 @@ app.use('/api/tmdb', async (req, res) => {
     })
     res.json(response.data)
   } catch (error) {
-    res.status(500).json({ error: 'TMDB fetch failed' })
+    console.error('TMDB Error:', error.message)  // ← yeh add karo
+    res.status(500).json({ error: error.message })  // ← yeh bhi
   }
 })
-
 module.exports = app
