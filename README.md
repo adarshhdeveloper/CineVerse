@@ -32,7 +32,7 @@ npm run dev
 
 ## Environment Variables
 
-PORT=5000
+NODE_ENV = production
 MONGO_URI=your_mongodb_uri
 JWT_SECRET=your_secret
 TMDB_API_KEY=your_tmdb_key
