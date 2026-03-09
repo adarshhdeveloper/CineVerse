@@ -42,4 +42,8 @@ app.use('/api/watch-history', watchHistoryRouter)
 const adminRouter = require('./routes/admin.routes')
 app.use('/api/admin', adminRouter)
 
+// TMDB proxy routes
+import tmdbRoutes from './routes/tmdb.routes.js'
+app.use('/api/tmdb', tmdbRoutes)
+
 module.exports = app
