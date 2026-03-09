@@ -59,4 +59,10 @@ app.use('/api/tmdb', async (req, res) => {
     res.status(500).json({ error: error.message })  // ← yeh bhi
   }
 })
+
+//health route
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' })
+})
+
 module.exports = app
