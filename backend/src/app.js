@@ -43,7 +43,19 @@ const adminRouter = require('./routes/admin.routes')
 app.use('/api/admin', adminRouter)
 
 // TMDB proxy routes
-import tmdbRoutes from './routes/tmdb.routes.js'
-app.use('/api/tmdb', tmdbRoutes)
+app.use('/api/tmdb', async (req, res) => {
+  try {
+    const tmdbPath = req.path
+    const response = await axios.get(`https://api.themoviedb.org/3${tmdbPath}`, {
+      params: {
+        ...req.query,
+        api_key: process.env.TMDB_API_KEY
+      }
+    })
+    res.json(response.data)
+  } catch (error) {
+    res.status(500).json({ error: 'TMDB fetch failed' })
+  }
+})
 
 module.exports = app
