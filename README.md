@@ -2,6 +2,8 @@
 
 A full-stack movie discovery platform where users can explore movies, watch trailers, and manage their preferences.
 
+live link :  https://cine-verse-eta.vercel.app/
+
 ## Tech Stack
 
 **Frontend:** React.js, Redux Toolkit, React Router
@@ -32,7 +34,7 @@ npm run dev
 
 ## Environment Variables
 
-PORT=5000
+NODE_ENV = production
 MONGO_URI=your_mongodb_uri
 JWT_SECRET=your_secret
 TMDB_API_KEY=your_tmdb_key
